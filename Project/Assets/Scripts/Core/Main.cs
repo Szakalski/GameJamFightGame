@@ -5,13 +5,11 @@ public class Main : MonoBehaviour {
 	
 	private static Main _instance;	
 	private SceneManager _sceneManager;
-	public EventManager eventManager;
 	
 	void Awake()
 	{
 		DontDestroyOnLoad(gameObject);		
 		_sceneManager = SceneManager.getInstance();
-		eventManager = EventManager.instance;
 	}
 	
 	void Start()
