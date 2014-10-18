@@ -8,8 +8,7 @@ public class Main : MonoBehaviour {
 	
 	void Awake()
 	{
-		DontDestroyOnLoad(gameObject);
-		
+		DontDestroyOnLoad(gameObject);		
 		_sceneManager = SceneManager.getInstance();
 	}
 	
