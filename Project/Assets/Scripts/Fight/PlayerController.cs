@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	private FightBase _fightBase;
+	private float playerStamina = 100f;
 
 	private void Awake()
 	{
