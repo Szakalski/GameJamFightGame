@@ -1,8 +1,9 @@
 #################
 ## Unity
 #################
-Library/
-Temp/
+Project/Library/
+Project/Temp/
+*.sln
 
 #################
 ## Eclipse
