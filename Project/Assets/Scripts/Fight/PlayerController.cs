@@ -3,13 +3,18 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	private FightBase _fightBase;
+
+	private void Awake()
+	{
+		_fightBase = GameObject.Find("FightController").GetComponent<FightBase>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void OnTapArea(int target)
+	{
+		CustomEvent hitEvent = new CustomEvent(FightBase.E_SEND_HIT);
+		hitEvent.arguments.Add("target", (PunchTarget)target);
+
+		_fightBase.eventManager.dispatchEvent(hitEvent);
 	}
 }

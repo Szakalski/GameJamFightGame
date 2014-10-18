@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Fight\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Fight\FightBase.cs" />
      <Compile Include="Assets\Scripts\Fight\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Fight\PunchTarget.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenuController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

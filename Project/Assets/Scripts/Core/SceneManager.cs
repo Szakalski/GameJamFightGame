@@ -4,7 +4,6 @@ using System.Collections;
 public class SceneManager : MonoBehaviour {
 	
 	private static SceneManager _instance;
-	private GameObject _loadingPanel;
 	
 	public static SceneManager getInstance()
 	{
