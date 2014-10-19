@@ -21,7 +21,7 @@ public class SceneManager : MonoBehaviour {
 		return _instance;
 	}
 	
-	public void loadLevel(string pName, string uiRoot = "UI Root")
+	public void loadLevel(string pName)
 	{
 		#if UNITY_EDITOR
 			Debug.Log ("SceneManager -> loadLevel: " + pName);
