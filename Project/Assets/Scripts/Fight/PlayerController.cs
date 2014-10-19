@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim;
 	int attackMidRight = Animator.StringToHash("AttackMidR");
 	int attackMidLeft = Animator.StringToHash("AttackMidL");
+//	int attackTopRight = Animator.StringToHash("AttackMidL");
+//	int attackTopLeft = Animator.StringToHash("AttackMidL");
+//	int attackLowLeft = Animator.StringToHash("AttackMidL");
+//	int attackLowLeft = Animator.StringToHash("AttackMidL");
 
 	private void Awake()
 	{
@@ -35,5 +39,21 @@ public class PlayerController : MonoBehaviour {
 		{
 			anim.SetTrigger(attackMidLeft);
 		}
+//		else if (PunchTarget.RIGHT_TOP == (PunchTarget)target)
+//		{
+//			anim.SetTrigger();
+//		}
+//		else if (PunchTarget.LEFT_TOP == (PunchTarget)target)
+//		{
+//			anim.SetTrigger();
+//		}
+//		else if (PunchTarget.RIGHT_LOW == (PunchTarget)target)
+//		{
+//			anim.SetTrigger();
+//		}
+//		else if (PunchTarget.LEFT_LOW == (PunchTarget)target)
+//		{
+//			anim.SetTrigger();
+//		}
 	}
 }
