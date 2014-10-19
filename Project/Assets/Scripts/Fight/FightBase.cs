@@ -1,24 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class FightBase : MonoBehaviour {
 
 	public static string E_FIGHT_START = "eFightStart";
 	public static string E_SEND_HIT = "eSendHit";
 	public static string E_SEND_DAMAGE = "eSendDamage";
-	
+	public static string E_PLAYER_WON = "ePlayerWon";
+	public static string E_PLAYER_LOST = "ePlayerLost";
+
 	[HideInInspector]
 	public EventManager eventManager;
 	private SceneManager _sceneManager;
+
+	private Text _endGameText;
+	private GameObject _leftTapArea, _rightTapArea;
 		
 	private void Awake()
 	{
 		eventManager = EventManager.instance;
 		_sceneManager = SceneManager.getInstance();
+		_endGameText = GameObject.Find("EndgameText").GetComponent<Text>();
+		_leftTapArea = GameObject.Find("LeftHitArea");
+		_rightTapArea = GameObject.Find("RightHitArea");
 	}
 	
 	private void Start () 
 	{
+		_endGameText.enabled = false;
 		InitiateListeners(eventManager);
 		eventManager.dispatchEvent(new CustomEvent(E_FIGHT_START));
 	}
@@ -27,6 +37,7 @@ public class FightBase : MonoBehaviour {
 	{
 		eventManager.addEventListener(E_FIGHT_START, gameObject, "FightStart");
 		eventManager.addEventListener(E_SEND_HIT, gameObject, "CheckPlayerHit");
+		eventManager.addEventListener(E_PLAYER_WON, gameObject, "FinishWonFight");
 	}
 
 	private void CheckPlayerHit(CustomEvent e)
@@ -52,6 +63,25 @@ public class FightBase : MonoBehaviour {
 			damageEvent.arguments.Add("damage", 30f);
 
 		eventManager.dispatchEvent(damageEvent);
+	}
+
+	private void FinishWonFight(CustomEvent e)
+	{
+		_endGameText.text = "YOU WON";
+		_endGameText.enabled = true;
+
+		_leftTapArea.SetActive(false);
+		_rightTapArea.SetActive(false);	
+
+		StartCoroutine(WaitAndGoToMainMenu());
+	}
+
+	private IEnumerator WaitAndGoToMainMenu()
+	{
+		yield return new WaitForSeconds(2.5f);
+
+		eventManager.removeAllEventListeners(gameObject);
+		_sceneManager.loadLevel("MainMenu");
 	}
 
 	private void FightStart(CustomEvent e)

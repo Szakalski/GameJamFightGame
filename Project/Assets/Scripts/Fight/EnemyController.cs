@@ -35,5 +35,8 @@ public class EnemyController : MonoBehaviour {
 		#if UNITY_EDITOR
 			Debug.Log("Damage done to enemy: " + damage);
 		#endif
+
+		if(enemyStamina <= 0)
+			_fightBase.eventManager.dispatchEvent(new CustomEvent(FightBase.E_PLAYER_WON));
 	 }
 }

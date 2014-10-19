@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -35,7 +35,13 @@ public class PlayerController : MonoBehaviour {
 
 	private void Start()
 	{
+		InitiateListeners(_fightBase.eventManager);
 		anim = GetComponent<Animator>();
+	}
+
+	private void InitiateListeners(EventManager eventManager)
+	{
+		eventManager.addEventListener(FightBase.E_PLAYER_WON, gameObject, "DisablePlayerControl");
 	}
 
 	private void FixedUpdate()
@@ -109,5 +115,10 @@ public class PlayerController : MonoBehaviour {
 //		{
 //			anim.SetTrigger();
 //		}
+	}
+
+	private void DisablePlayerControl(CustomEvent e)
+	{
+		Destroy(this);
 	}
 }
