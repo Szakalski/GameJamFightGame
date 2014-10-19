@@ -5,7 +5,10 @@ public class PlayerController : MonoBehaviour {
 
 	private FightBase _fightBase;
 	private float playerStamina = 100f;
+
 	private Animator anim;
+	int attackMidRight = Animator.StringToHash("AttackMidR");
+	int attackMidLeft = Animator.StringToHash("AttackMidL");
 
 	private void Awake()
 	{
@@ -23,5 +26,14 @@ public class PlayerController : MonoBehaviour {
 		hitEvent.arguments.Add("target", (PunchTarget)target);
 
 		_fightBase.eventManager.dispatchEvent(hitEvent);
+
+		if (PunchTarget.RIGHT_MID == (PunchTarget)target)
+		{
+			anim.SetTrigger(attackMidRight);
+		}
+		else if (PunchTarget.LEFT_MID == (PunchTarget)target)
+		{
+			anim.SetTrigger(attackMidLeft);
+		}
 	}
 }
