@@ -5,10 +5,16 @@ public class PlayerController : MonoBehaviour {
 
 	private FightBase _fightBase;
 	private float playerStamina = 100f;
+	private Animator anim;
 
 	private void Awake()
 	{
 		_fightBase = GameObject.Find("FightController").GetComponent<FightBase>();
+	}
+
+	private void Start()
+	{
+		anim = GetComponent<Animator>();
 	}
 
 	public void OnTapArea(int target)

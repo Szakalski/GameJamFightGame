@@ -17,7 +17,8 @@ public class FightBase : MonoBehaviour {
 		_sceneManager = SceneManager.getInstance();
 	}
 	
-	private void Start () {
+	private void Start () 
+	{
 		InitiateListeners(eventManager);
 		eventManager.dispatchEvent(new CustomEvent(E_FIGHT_START));
 	}
